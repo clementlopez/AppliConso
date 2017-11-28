@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+
+
+</head>
+<body>
+    <script type="text/javascript" src="jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <script type="text/javascript">
+		tab = [];
+
+/*
+window.onload = function () {
+
+    noms = [];
+        nbdata = 0;
+    values = [];
+    datastruct = {
+        fillColor: "rgba(220,220,220,0)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            data: values[0]
+    };
+    tabdata = [datastruct];
+
+    $.getJSON('http://127.0.0.1:3035', {get_param: 'value'}, function (data) {
+        $.each(data, function (index, element) {
+            noms.push(index);
+					nbdata++;
+            values.push(element);
+
+            nbapplis++;
+        });
+    });
+
+	window.onload = function () {
+    datas = [{labels:time[0],datasets:tabdata[0]}];
+
+		// dataPoints
+		var dataArray = {};
+
+		 values = [];
+         datas = [];
+         tabs = [datas];
+		for(var i = 0; i < nbdata; i++){
+    noms.push("appli1");
+    noms.push("appli2");
+    time.push(new Date());
+    time.push(new Date());
+    values.push(50);
+    values.push(60);
+    nbapplis = 2;
+
+		    dataArray.append({
+                // dataSeries1
+                type: "line",
+                lineThickness: 2,
+                xValueType: "dateTime",
+                showInLegend: true,
+                name: noms[i] +" : " + tab[i],
+                dataPoints: tabs[i]
+            })
+
+//initialisation
+
+    $.getJSON('http://127.0.0.1:3035', {get_param: 'value'}, function (data) {
+        $.each(data, function (index, element) {
+            noms.push(index);
+            values.push(element);
+            datas.push();
+            nbapplis++;
+        });
+    });
+
+    for (var i = 0; i < nbapplis; i++) {
+        tabseries.push({labels: noms[i], datasets: datas});
+    }
+
+		var chart = new CanvasJS.Chart("chartContainer",{
+			zoomEnabled: true,
+			title: {
+				text: "System and apps consumption"		
+			},
+			toolTip: {
+				shared: true
+    //Fonction qui permet de récupérer les données du serveur
+    requete = function () {
+        $.getJSON('http://127.0.0.1:3035', {get_param: 'value'}, function (data) {
+            tab = [];
+            $.each(data, function (index, element) {
+                tab.push(element);
+            });
+        });
+    };
+
+			},
+			legend: {
+				verticalAlign: "top",
+				horizontalAlign: "center",
+                fontSize: 14,
+				fontWeight: "bold",
+				fontFamily: "calibri",
+				fontColor: "dimGrey"
+			},
+    //fonction qui met à jour les données du graphique
+    updateData2 = function () {
+        for (var i = 0; i < nbapplis; i++) {
+            values.push(tab[i]);
+        }
+    };
+
+    var options = {
+        axisX: {
+				title: "chart updates every 1 secs"
+			},
+			axisY:{
+				prefix: 'W',
+				includeZero: false
+			}, 
+			data: dataArray,
+			/*
+				[{
+				// dataSeries1
+				type: "line",
+				lineThickness: 2,
+				xValueType: "dateTime",
+				showInLegend: true,
+				name: noms[0] +" : " + yValue1,
+				dataPoints: dataPoints1
+			},
+			{				
+				// dataSeries2
+				type: "line",
+				lineThickness: 2,
+				xValueType: "dateTime",
+				showInLegend: true,
+				name: noms[1] +" : " + yValue2,
+				dataPoints: dataPoints2
+            type: Chartist.FixedScaleAxis,
+            divisor: 5,
+            labelInterpolationFnc: function (value) {
+                return moment(value).format('LTS');
+
+
+
